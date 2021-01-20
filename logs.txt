@@ -1,0 +1,35 @@
+INFO    2020-12-17 21:40:04,042 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - User returned to init execution
+INFO    2020-12-17 21:40:04,044 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - [0;1m[31mUser returned to init execution.
+[0m[0m
+INFO    2020-12-17 21:40:48,369 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - App execution was ended by user.
+INFO    2020-12-17 21:47:47,474 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - [0;1m[31mUser returned to init execution.
+[0m[0m
+INFO    2020-12-17 21:48:57,169 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - App execution was ended by user.
+INFO    2020-12-23 10:32:13,147 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title test was added.
+INFO    2020-12-27 21:38:18,977 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title new was added.
+INFO    2020-12-27 21:39:13,995 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title new was added.
+INFO    2020-12-27 21:39:31,084 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title new2 was added.
+INFO    2020-12-27 21:39:55,963 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Tasks was successfully saved to database.
+INFO    2020-12-27 21:44:44,349 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title old was added.
+INFO    2020-12-27 21:45:05,322 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title old was deleted.
+INFO    2020-12-27 21:55:22,332 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title now was added.
+INFO    2020-12-27 21:55:55,543 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title new was added.
+INFO    2020-12-27 22:06:36,616 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title new was added.
+INFO    2020-12-27 22:09:37,229 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title new was added.
+INFO    2020-12-27 22:15:16,042 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title new was added.
+INFO    2021-01-14 13:01:07,811 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title new was deleted.
+INFO    2021-01-14 13:01:18,367 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Tasks was successfully saved to database.
+INFO    2021-01-14 13:02:00,566 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title alternationTime was changed.
+INFO    2021-01-14 13:02:24,926 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - App execution was ended by user.
+INFO    2021-01-14 13:02:48,989 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Tasks was successfully saved to database.
+INFO    2021-01-14 13:05:08,737 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title wake up was added.
+INFO    2021-01-14 13:08:12,152 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Tasks was successfully saved to database.
+INFO    2021-01-14 13:08:15,314 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - App execution was ended by user.
+INFO    2021-01-14 13:10:58,779 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title wake up was changed.
+INFO    2021-01-14 13:12:36,381 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title wake up was changed.
+INFO    2021-01-14 13:12:59,253 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Task with title wake up was changed.
+INFO    2021-01-14 13:13:03,312 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - Tasks was successfully saved to database.
+INFO    2021-01-14 13:13:06,944 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - App execution was ended by user.
+INFO    2021-01-14 13:46:29,975 [main] ua.edu.sumdu.j2se.Koval.tasks.Model  - Task with title wake up was changed.
+INFO    2021-01-14 13:47:13,837 [main] ua.edu.sumdu.j2se.Koval.tasks.Model  - Tasks was successfully saved to database.
+INFO    2021-01-14 13:47:41,502 [main] ua.edu.sumdu.j2se.Koval.tasks.Model  - App execution was ended by user.

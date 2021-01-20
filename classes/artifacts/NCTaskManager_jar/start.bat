@@ -1,0 +1,1 @@
+java -cp NCTaskManager.jar ua.edu.sumdu.j2se.Koval.tasks.App
