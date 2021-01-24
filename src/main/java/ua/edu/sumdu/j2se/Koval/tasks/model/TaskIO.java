@@ -1,4 +1,4 @@
-package ua.edu.sumdu.j2se.Koval.tasks;
+package ua.edu.sumdu.j2se.Koval.tasks.model;
 
 import com.google.gson.Gson;
 

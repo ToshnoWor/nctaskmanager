@@ -4,8 +4,8 @@ import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
-import static ua.edu.sumdu.j2se.Koval.tasks.View.*;
-import static ua.edu.sumdu.j2se.Koval.tasks.Controller.*;
+import static ua.edu.sumdu.j2se.Koval.tasks.view.View.*;
+import static ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.*;
 
 /**
  * Class UI.

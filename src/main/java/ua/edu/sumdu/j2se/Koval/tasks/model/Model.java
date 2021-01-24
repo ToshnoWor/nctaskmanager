@@ -1,4 +1,4 @@
-package ua.edu.sumdu.j2se.Koval.tasks;
+package ua.edu.sumdu.j2se.Koval.tasks.model;
 
 import org.apache.log4j.*;
 
@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-import static ua.edu.sumdu.j2se.Koval.tasks.View.*;
+import static ua.edu.sumdu.j2se.Koval.tasks.view.View.*;
 
 /**
  * Class Model

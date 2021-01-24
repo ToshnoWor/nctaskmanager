@@ -1,10 +1,10 @@
-package ua.edu.sumdu.j2se.Koval.tasks;
+package ua.edu.sumdu.j2se.Koval.tasks.view;
 
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
-import static ua.edu.sumdu.j2se.Koval.tasks.Model.*;
+import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.*;
 
 /**
  * Class View

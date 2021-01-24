@@ -1,16 +1,18 @@
-package ua.edu.sumdu.j2se.Koval.tasks;
+package ua.edu.sumdu.j2se.Koval.tasks.controller;
+
+import ua.edu.sumdu.j2se.Koval.tasks.model.Model;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
 
-import static ua.edu.sumdu.j2se.Koval.tasks.Model.changeTitle;
-import static ua.edu.sumdu.j2se.Koval.tasks.Model.changeTime;
-import static ua.edu.sumdu.j2se.Koval.tasks.Model.changeStartEndInterval;
-import static ua.edu.sumdu.j2se.Koval.tasks.Model.changeActive;
-import static ua.edu.sumdu.j2se.Koval.tasks.Model.addTask;
-import static ua.edu.sumdu.j2se.Koval.tasks.Model.removeTask;
-import static ua.edu.sumdu.j2se.Koval.tasks.Model.scanId;
-import static ua.edu.sumdu.j2se.Koval.tasks.Model.scanAction;
+import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.changeTitle;
+import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.changeTime;
+import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.changeStartEndInterval;
+import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.changeActive;
+import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.addTask;
+import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.removeTask;
+import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.scanId;
+import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.scanAction;
 
 /**
  * Controller class. On the other hand, the user changes the model.
