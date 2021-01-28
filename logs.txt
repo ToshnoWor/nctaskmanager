@@ -3,3 +3,4 @@ INFO    2021-01-24 17:11:32,630 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model
 INFO    2021-01-24 17:13:28,314 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title Wake up was added.
 INFO    2021-01-24 17:13:31,589 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
 INFO    2021-01-24 17:13:40,898 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - App execution was ended by user.
+INFO    2021-01-28 17:05:27,290 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - App execution was ended by user.

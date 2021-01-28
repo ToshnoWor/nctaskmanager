@@ -1,18 +1,13 @@
 package ua.edu.sumdu.j2se.Koval.tasks.controller;
 
 import ua.edu.sumdu.j2se.Koval.tasks.model.Model;
+import ua.edu.sumdu.j2se.Koval.tasks.view.View;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.InputMismatchException;
 
-import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.changeTitle;
-import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.changeTime;
-import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.changeStartEndInterval;
-import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.changeActive;
-import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.addTask;
-import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.removeTask;
-import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.scanId;
-import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.scanAction;
+import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.*;
 
 /**
  * Controller class. On the other hand, the user changes the model.
@@ -20,55 +15,39 @@ import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.scanAction;
  */
 public class Controller {
 
-    /*public static void changeTask(int action, int idTask) throws InterruptedException {
-        switch (action){
-            case 1:
-                System.out.println("Enter your new title");
-                changeTitle(idTask);
-                break;
-            case 2:
-                changeTime(idTask);
-                break;
-            case 3:
-                changeStartEndInterval(idTask);
-                break;
-            case 4:
-                System.out.println("Enter true if you want to activate the task, and false otherwise.");
-                changeActive(idTask);
-                break;
-            default:
-                System.out.println("Error select");
+    View view;
+    Model model;
 
-        }
-    }*/
+    public Controller(){
+        view = new View();
+        model = new Model();
+    }
 
     /**
      * The caseChangeTask method is responsible for modifying an existing task.
      * @throws InterruptedException
      */
-    public static void caseChangeTask() throws InterruptedException {
-        int idSelectTest = scanId();
-        int actionChange = scanAction();
+    public void caseChangeTask() throws InterruptedException {
+        int idSelectTest = view.scanInt();
+        int actionChange = view.scanAction();
         switch (actionChange){
             case 1:
                 System.out.println("Enter your new title");
-                changeTitle(idSelectTest);
+                model.changeTitle(idSelectTest, view);
                 break;
             case 2:
-                changeTime(idSelectTest);
+                model.changeTime(idSelectTest, view);
                 break;
             case 3:
-                changeStartEndInterval(idSelectTest);
+                model.changeStartEndInterval(idSelectTest, view);
                 break;
             case 4:
                 System.out.println("Enter true if you want to activate the task, and false otherwise.");
-                changeActive(idSelectTest);
+                model.changeActive(idSelectTest, view);
                 break;
             default:
                 System.out.println("Error select");
-
         }
-        /*changeTask(actionChange,idSelectTest);*/
     }
 
     /**
@@ -76,29 +55,29 @@ public class Controller {
      * @throws InputMismatchException
      * @throws InterruptedException
      */
-    public static void caseRemoveTask() throws InputMismatchException, InterruptedException {
-        removeTask();
+    public void caseRemoveTask() throws InputMismatchException, InterruptedException {
+        removeTask(view);
     }
 
     /**
      * The caseRemoveTask method is responsible for passing the command to add the task to the model.
      * @throws InterruptedException
      */
-    public static void caseAddTask() throws InterruptedException {
-        addTask();
+    public void caseAddTask() throws InterruptedException {
+        model.addTask(view);
     }
 
     /**
      * The caseRemoveTask method is responsible for passing the command to create an empty initial task list.
      */
-    public static void createEmptyList(){
+    public void createEmptyList(){
         Model.createEmptyList();
     }
 
     /**
      * The caseRemoveTask method is responsible for passing the command and configuring the program logging.
      */
-    public static void configureLogging(){
+    public void configureLogging(){
         Model.configureLogging();
     }
 
@@ -108,8 +87,8 @@ public class Controller {
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public static void readOnDb() throws InterruptedException, IOException, ClassNotFoundException {
-        Model.readOnDb();
+    public void readOnDb() throws InterruptedException, IOException, ClassNotFoundException {
+        Model.readOnDb(view);
     }
 
     /**
@@ -118,7 +97,7 @@ public class Controller {
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public static void loadInDb() throws InterruptedException, IOException, ClassNotFoundException {
+    public void loadInDb() throws InterruptedException, IOException, ClassNotFoundException {
         Model.loadInDb();
     }
 
@@ -126,8 +105,8 @@ public class Controller {
      * The caseRemoveTask method is responsible for passing the command to sort tasks by condition from and to.
      * @throws InterruptedException
      */
-    public static void caseFilterTask() throws InterruptedException {
-        Model.caseFilterTask();
+    public void caseFilterTask() throws InterruptedException {
+        Model.caseFilterTask(view);
     }
 
     /**
@@ -143,5 +122,50 @@ public class Controller {
      */
     public static void getMessageException(String message){
         Model.getMessageException(message);
+    }
+
+    public int scanAction() throws InterruptedException {
+        return view.scanAction();
+    }
+
+    public boolean lifeCycle(){
+        try {
+            System.out.println("Add - 1\nShow - 2\nRemove - 3\nChange task - 4\nSave - 5\nLoad - 6\nFilter task by time - 7\nAlarm - 8\nExit - 9.\nYou can write 'quit' at anytime, when you want back to main menu.");
+            int action = scanAction();
+            switch (action){
+                case 1:
+                    caseAddTask();
+                    return true;
+                case 2:
+                    view.caseShowTasks();
+                    return true;
+                case 3:
+                    caseRemoveTask();
+                    return true;
+                case 4:
+                    caseChangeTask();
+                    return true;
+                case 6:
+                    readOnDb();
+                    return true;
+                case 5:
+                    loadInDb();
+                    return true;
+                case 7:
+                    caseFilterTask();
+                    return true;
+                case 8:
+                    view.caseNextTimeTask(view);
+                    return true;
+                case 9:
+                    exit();
+                    return false;
+            }
+        } catch (IOException | CloneNotSupportedException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException | ClassNotFoundException | InterruptedException e) {
+            getMessageException(e.getMessage());
+            System.out.println(e.getMessage());
+            return true;
+        }
+        return true;
     }
 }

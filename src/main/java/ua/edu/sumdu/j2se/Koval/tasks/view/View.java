@@ -11,13 +11,19 @@ import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.*;
  * @author Aleksei Koval
  */
 public class View {
+
+    private int action;
+    private LocalDateTime time;
+
+    public View(){}
+
     /**
      * Method scanInt.
      * Scans only the int value from the console.
      * @return int value.
      * @throws InterruptedException
      */
-    public static int scanInt() throws InterruptedException {
+    public int scanInt() throws InterruptedException {
         Scanner scanI = new Scanner(System.in);
         while (!scanI.hasNextInt()){
             System.out.println("Enter 'number': ");
@@ -36,7 +42,7 @@ public class View {
      * @return boolean value.
      * @throws InterruptedException
      */
-    public static boolean scanBoolean() throws InterruptedException {
+    public boolean scanBoolean() throws InterruptedException {
         Scanner scanB = new Scanner(System.in);
         while (!scanB.hasNextBoolean()){
             System.out.println("Enter 'true' or 'false': ");
@@ -54,7 +60,7 @@ public class View {
      * @return String value.
      * @throws InterruptedException
      */
-    public static String scanString() throws InterruptedException {
+    public String scanString() throws InterruptedException {
         Scanner scanS = new Scanner(System.in);
         String title = scanS.nextLine();
         checkQuit(title);
@@ -62,13 +68,29 @@ public class View {
     }
 
     /**
-     * Method getTime.
-     * Scans since date and phased to LocalDateTime.
-     * @param name variable name.
-     * @return LocalDateTime value.
+     * Scan action
+     * @return some int
      * @throws InterruptedException
      */
-    public static LocalDateTime getTime(String name) throws InterruptedException {
+    public int scanAction() throws InterruptedException {
+        action = scanInt();
+        return getAction();
+    }
+
+    /**
+     * Return action in class
+     * @return some int
+     */
+    public int getAction(){
+        return action;
+    }
+
+    /**
+     * Scan time
+     * @param name - name time
+     * @throws InterruptedException
+     */
+    public void scanTime(String name) throws InterruptedException {
         System.out.println("Enter " + name);
         System.out.println("Enter 'year'");
         int Year = scanInt();
@@ -80,7 +102,19 @@ public class View {
         int Hour = scanInt();
         System.out.println("Enter 'min'");
         int Min = scanInt();
-        return LocalDateTime.of(Year,Month,DayOfMonth,Hour,Min);
+        time = LocalDateTime.of(Year,Month,DayOfMonth,Hour,Min);
+    }
+
+    /**
+     * Method getTime.
+     * Scans since date and phased to LocalDateTime.
+     * @param name variable name.
+     * @return LocalDateTime value.
+     * @throws InterruptedException
+     */
+    public LocalDateTime getTime(String name) throws InterruptedException {
+        scanTime(name);
+        return time;
     }
 
     /**
@@ -89,7 +123,7 @@ public class View {
      * @return int value - interval.
      * @throws InterruptedException
      */
-    public static int getInterval() throws InterruptedException {
+    public int getInterval() throws InterruptedException {
         System.out.println("Enter interval.");
         return scanInt();
     }
@@ -98,7 +132,7 @@ public class View {
      * Method caseShowTasks.
      * Calls the rendering method of tasks in the model class.
      */
-    public static void caseShowTasks(){
+    public void caseShowTasks(){
         showTasks();
     }
 
@@ -112,10 +146,10 @@ public class View {
      * @throws InvocationTargetException
      * @throws InterruptedException
      */
-    public static void caseNextTimeTask() throws NoSuchMethodException, InstantiationException, IllegalAccessException, CloneNotSupportedException, InvocationTargetException, InterruptedException {
+    public void caseNextTimeTask(View view) throws NoSuchMethodException, InstantiationException, IllegalAccessException, CloneNotSupportedException, InvocationTargetException, InterruptedException {
         if (listIsEmpty())
             return;
-        NextTimeTask();
+        NextTimeTask(view);
     }
 
     /**
@@ -123,7 +157,7 @@ public class View {
      * @param value word quit to leave.
      * @throws InterruptedException
      */
-    public static void checkQuit(String value) throws InterruptedException {
+    public void checkQuit(String value) throws InterruptedException {
         if (value.equals("quit")) {
             throw new InterruptedException("User returned to init execution.");
         }

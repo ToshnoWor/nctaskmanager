@@ -1,6 +1,7 @@
 package ua.edu.sumdu.j2se.Koval.tasks.model;
 
 import org.apache.log4j.*;
+import ua.edu.sumdu.j2se.Koval.tasks.view.View;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -81,15 +82,14 @@ public class Model {
      * @throws ClassNotFoundException
      * @throws InterruptedException
      */
-    public static void readOnDb() throws IOException, ClassNotFoundException, InterruptedException {
-
+    public static void readOnDb(View view) throws IOException, ClassNotFoundException, InterruptedException {
         if (list.size()==0) {
             FileInputStream fileIn = new FileInputStream("db.txt");
             ObjectInputStream inFile = new ObjectInputStream(fileIn);
             list = (LinkedTaskList) inFile.readObject();
         } else {
             System.out.println("List not empty, replace(true) or add new tasks(false)");
-            if (scanBoolean()){
+            if (view.scanBoolean()){
                 FileInputStream fileIn = new FileInputStream("db.txt");
                 ObjectInputStream inFile = new ObjectInputStream(fileIn);
                 list = (LinkedTaskList) inFile.readObject();
@@ -142,8 +142,8 @@ public class Model {
      * Filters the list of tasks inside and out. Draws them to the screen.
      * @throws InterruptedException
      */
-    public static void caseFilterTask() throws InterruptedException {
-        Iterable<Task> res = Tasks.incoming(list, getTime("start"), getTime("end"));
+    public static void caseFilterTask(View view) throws InterruptedException {
+        Iterable<Task> res = Tasks.incoming(list, view.getTime("start"), view.getTime("end"));
         res.forEach(task -> System.out.println(task.toString()));
     }
 
@@ -161,8 +161,8 @@ public class Model {
      * @param id id task.
      * @throws InterruptedException
      */
-    public static void changeTitle(int id) throws InterruptedException {
-        list.getTask(id).setTitle(scanString());
+    public void changeTitle(int id, View view) throws InterruptedException {
+        list.getTask(id).setTitle(view.scanString());
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
     }
 
@@ -172,8 +172,8 @@ public class Model {
      * @param id id task.
      * @throws InterruptedException
      */
-    public static void changeTime(int id) throws InterruptedException {
-        list.getTask(id).setTime(getTime("time"));
+    public void changeTime(int id, View view) throws InterruptedException {
+        list.getTask(id).setTime(view.getTime("time"));
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
     }
 
@@ -183,13 +183,13 @@ public class Model {
      * @param id id task.
      * @throws InterruptedException
      */
-    public static void changeStartEndInterval(int id) throws InterruptedException {
+    public void changeStartEndInterval(int id, View view) throws InterruptedException {
         if (list.getTask(id).isRepeated()){
-            switcherChangeSEI(id);
+            switcherChangeSEI(id, view);
         } else {
             System.out.println("Task is not repeated.Continuous?(true or false)");
-            if (scanBoolean())
-                switcherChangeSEI(id);
+            if (view.scanBoolean())
+                switcherChangeSEI(id, view);
         }
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
     }
@@ -200,20 +200,20 @@ public class Model {
      * @param id id task.
      * @throws InterruptedException
      */
-    private static void switcherChangeSEI(int id) throws InterruptedException {
+    private void switcherChangeSEI(int id, View view) throws InterruptedException {
         System.out.println("Change start - 1, change end - 2, change interval - 3, change full - 4.");
-        switch (scanInt()){
+        switch (view.scanInt()){
             case 1:
-                list.getTask(id).setTime(getTime("'start'"), list.getTask(id).getEndTime(), list.getTask(id).getRepeatInterval());
+                list.getTask(id).setTime(view.getTime("'start'"), list.getTask(id).getEndTime(), list.getTask(id).getRepeatInterval());
                 break;
             case 2:
-                list.getTask(id).setTime(list.getTask(id).getStartTime(), getTime("'end'"), list.getTask(id).getRepeatInterval());
+                list.getTask(id).setTime(list.getTask(id).getStartTime(), view.getTime("'end'"), list.getTask(id).getRepeatInterval());
                 break;
             case 3:
-                list.getTask(id).setTime(list.getTask(id).getStartTime(), list.getTask(id).getEndTime(), getInterval());
+                list.getTask(id).setTime(list.getTask(id).getStartTime(), list.getTask(id).getEndTime(), view.getInterval());
                 break;
             case 4:
-                list.getTask(id).setTime(getTime("'start'"), getTime("'end'"), getInterval());
+                list.getTask(id).setTime(view.getTime("'start'"), view.getTime("'end'"), view.getInterval());
                 break;
             default:
                 System.out.println("Error select");
@@ -226,31 +226,9 @@ public class Model {
      * @param id id task.
      * @throws InterruptedException
      */
-    public static void changeActive(int id) throws InterruptedException {
-        list.getTask(id).setActive(scanBoolean());
+    public void changeActive(int id, View view) throws InterruptedException {
+        list.getTask(id).setActive(view.scanBoolean());
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
-    }
-
-    /**
-     * Method scanId.
-     * Scans the task ID.
-     * @return task ID.
-     * @throws InterruptedException
-     */
-    public static int scanId() throws InterruptedException {
-        System.out.println("Input id task");
-        return scanInt();
-    }
-
-    /**
-     * Method scanAction.
-     * Scans the task action.
-     * @return task action.
-     * @throws InterruptedException
-     */
-    public static int scanAction() throws InterruptedException {
-        System.out.println("Change title - 1\nChange time - 2\nChange start, end and interval - 3\nChange active - 4");
-        return scanInt();
     }
 
     /**
@@ -258,9 +236,9 @@ public class Model {
      * Removes the required task from the list.
      * @throws InterruptedException
      */
-    public static void removeTask() throws InterruptedException {
+    public static void removeTask(View view) throws InterruptedException {
         System.out.println("Enter id.");
-        int id = scanInt();
+        int id = view.scanInt();
         String title = "";
         if (list.size()!=0 && list.getTask(id)!=null) {
             title = list.getTask(id).getTitle();
@@ -277,9 +255,8 @@ public class Model {
      * Adds a task to the list.
      * @throws InterruptedException
      */
-    public static void addTask() throws InterruptedException {
-
-        Task task = readTask();
+    public void addTask(View view) throws InterruptedException {
+        Task task = readTask(view);
         task.setActive(true);
         if (haveCopyTask(task))
             System.out.println("List have copy task");
@@ -294,21 +271,21 @@ public class Model {
      * @return A finished copy of the task.
      * @throws InterruptedException
      */
-    public static Task readTask() throws InterruptedException {
+    public Task readTask(View view) throws InterruptedException {
         Task task;
         System.out.println("Enter 'title'.");
-        String title = scanString();
+        String title = view.scanString();
         System.out.println("Enter repeated 'true' or 'false'.");
-        boolean repeated = scanBoolean();
+        boolean repeated = view.scanBoolean();
         if (repeated){
             System.out.println("Enter 'interval'.");
-            int interval = scanInt();
-            LocalDateTime start = getTime("'start'");
-            LocalDateTime end = getTime("'end'");
+            int interval = view.scanInt();
+            LocalDateTime start = view.getTime("'start'");
+            LocalDateTime end = view.getTime("'end'");
             task = new Task(title,start,end,interval);
         }
         else {
-            LocalDateTime time = getTime("'time'");
+            LocalDateTime time = view.getTime("'time'");
             task = new Task(title,time);
         }
         return task;
@@ -324,15 +301,15 @@ public class Model {
      * @throws InvocationTargetException
      * @throws InterruptedException
      */
-    public static void NextTimeTask() throws NoSuchMethodException, InstantiationException, IllegalAccessException, CloneNotSupportedException, InvocationTargetException, InterruptedException {
+    public static void NextTimeTask(View view) throws NoSuchMethodException, InstantiationException, IllegalAccessException, CloneNotSupportedException, InvocationTargetException, InterruptedException {
         if (getNextTimeTask(list)!=null) {
             System.out.println("Enter time duration - true or full time to time Task - false.");
-            boolean timeSwitch = scanBoolean();
+            boolean timeSwitch = view.scanBoolean();
             if (timeSwitch) {
                 System.out.println("Enter time alarm\nEnter hours:");
-                int hoursAlarm = scanInt();
+                int hoursAlarm = view.scanInt();
                 System.out.println("Enter minutes");
-                int minutesAlarm = scanInt();
+                int minutesAlarm = view.scanInt();
                 LocalTime alarmTime = LocalTime.of(hoursAlarm, minutesAlarm, 1);
                 LocalTime now = LocalTime.of(0, 0);
                 while (now.isBefore(alarmTime)) {
