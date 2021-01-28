@@ -160,9 +160,10 @@ public class Model {
      * @param id id task.
      * @throws InterruptedException
      */
-    public void changeTitle(int id, View view) throws InterruptedException {
+    public void changeTitle(int id, View view) throws InterruptedException, IOException {
         list.getTask(id).setTitle(view.scanString());
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
+        loadInDb();
     }
 
     /**
@@ -171,9 +172,10 @@ public class Model {
      * @param id id task.
      * @throws InterruptedException
      */
-    public void changeTime(int id, View view) throws InterruptedException {
+    public void changeTime(int id, View view) throws InterruptedException, IOException {
         list.getTask(id).setTime(view.getTime("time"));
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
+        loadInDb();
     }
 
     /**
@@ -182,7 +184,7 @@ public class Model {
      * @param id id task.
      * @throws InterruptedException
      */
-    public void changeStartEndInterval(int id, View view) throws InterruptedException {
+    public void changeStartEndInterval(int id, View view) throws InterruptedException, IOException {
         if (list.getTask(id).isRepeated()){
             switcherChangeSEI(id, view);
         } else {
@@ -191,6 +193,7 @@ public class Model {
                 switcherChangeSEI(id, view);
         }
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
+        loadInDb();
     }
 
     /**
@@ -225,9 +228,10 @@ public class Model {
      * @param id id task.
      * @throws InterruptedException
      */
-    public void changeActive(int id, View view) throws InterruptedException {
+    public void changeActive(int id, View view) throws InterruptedException, IOException {
         list.getTask(id).setActive(view.scanBoolean());
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
+        loadInDb();
     }
 
     /**
@@ -235,7 +239,7 @@ public class Model {
      * Removes the required task from the list.
      * @throws InterruptedException
      */
-    public void removeTask(View view) throws InterruptedException {
+    public void removeTask(View view) throws InterruptedException, IOException {
         System.out.println("Enter id.");
         int id = view.scanInt();
         String title = "";
@@ -247,6 +251,7 @@ public class Model {
             System.out.println("You are mistaken.");
         }
         logger.info("Task with title " + title + " was deleted.");
+        loadInDb();
     }
 
     /**
@@ -262,6 +267,7 @@ public class Model {
         else
             list.add(task);
         logger.info("Task with title " + task.getTitle() + " was added.");
+        loadInDb();
     }
 
     /**

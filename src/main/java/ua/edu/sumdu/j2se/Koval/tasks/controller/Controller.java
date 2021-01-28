@@ -21,24 +21,14 @@ public class Controller {
         model = new Model();
     }
 
-    public static void NextTimeTask(View view) throws NoSuchMethodException, InterruptedException, InstantiationException, CloneNotSupportedException, IllegalAccessException, InvocationTargetException {
-        Model.NextTimeTask(view);
-    }
-
-    public static boolean listIsEmpty() {
-        return Model.listIsEmpty();
-    }
-
-    public static void showTasks() {
-        Model.showTasks();
-    }
-
     /**
      * The caseChangeTask method is responsible for modifying an existing task.
      * @throws InterruptedException
      */
-    public void caseChangeTask() throws InterruptedException {
+    public void caseChangeTask() throws InterruptedException, IOException {
+        System.out.println("Enter id task");
         int idSelectTest = view.scanInt();
+        System.out.println("Enter change action: 1 - title; 2 - time; 3 - start, end,interval; 4 - active.");
         int actionChange = view.scanAction();
         switch (actionChange){
             case 1:
@@ -65,7 +55,7 @@ public class Controller {
      * @throws InputMismatchException
      * @throws InterruptedException
      */
-    public void caseRemoveTask() throws InputMismatchException, InterruptedException {
+    public void caseRemoveTask() throws InputMismatchException, InterruptedException, IOException {
         model.removeTask(view);
     }
 
@@ -73,7 +63,7 @@ public class Controller {
      * The caseRemoveTask method is responsible for passing the command to add the task to the model.
      * @throws InterruptedException
      */
-    public void caseAddTask() throws InterruptedException, IOException {
+    public void caseAddTask() throws InterruptedException, IOException, ClassNotFoundException {
         model.addTask(view);
     }
 
@@ -150,7 +140,7 @@ public class Controller {
      */
     public boolean lifeCycle(){
         try {
-            System.out.println("Add - 1\nShow - 2\nRemove - 3\nChange task - 4\nSave - 5\nLoad - 6\nFilter task by time - 7\nAlarm - 8\nExit - 9.\nYou can write 'quit' at anytime, when you want back to main menu.");
+            System.out.println("Add - 1\nShow - 2\nRemove - 3\nChange task - 4\nFilter task by time - 5\nAlarm - 6\nExit - 7.\nYou can write 'quit' at anytime, when you want back to main menu.");
             int action = scanAction();
             switch (action){
                 case 1:
@@ -165,19 +155,13 @@ public class Controller {
                 case 4:
                     caseChangeTask();
                     return true;
-                case 6:
-                    readOnDb();
-                    return true;
                 case 5:
-                    loadInDb();
-                    return true;
-                case 7:
                     caseFilterTask();
                     return true;
-                case 8:
+                case 6:
                     view.caseNextTimeTask(view);
                     return true;
-                case 9:
+                case 7:
                     exit();
                     return false;
             }
@@ -187,5 +171,34 @@ public class Controller {
             return true;
         }
         return true;
+    }
+
+    /**
+     * Print next time task in list
+     * @param view - scanner
+     * @throws NoSuchMethodException
+     * @throws InterruptedException
+     * @throws InstantiationException
+     * @throws CloneNotSupportedException
+     * @throws IllegalAccessException
+     * @throws InvocationTargetException
+     */
+    public static void NextTimeTask(View view) throws NoSuchMethodException, InterruptedException, InstantiationException, CloneNotSupportedException, IllegalAccessException, InvocationTargetException {
+        Model.NextTimeTask(view);
+    }
+
+    /**
+     * Check isEmpty list in model
+     * @return true or false
+     */
+    public static boolean listIsEmpty() {
+        return Model.listIsEmpty();
+    }
+
+    /**
+     * Show task list in model
+     */
+    public static void showTasks() {
+        Model.showTasks();
     }
 }

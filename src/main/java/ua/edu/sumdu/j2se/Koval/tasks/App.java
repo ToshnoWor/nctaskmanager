@@ -1,5 +1,6 @@
 package ua.edu.sumdu.j2se.Koval.tasks;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 
 /**
@@ -14,7 +15,7 @@ public class App {
      * @param args incoming steam.
      * @throws InputMismatchException
      */
-    public static void main(String [] args) throws InputMismatchException {
+    public static void main(String [] args) throws InputMismatchException, InterruptedException, IOException, ClassNotFoundException {
         UI.app();
     }
 }

@@ -4,3 +4,16 @@ INFO    2021-01-24 17:13:28,314 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model
 INFO    2021-01-24 17:13:31,589 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
 INFO    2021-01-24 17:13:40,898 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - App execution was ended by user.
 INFO    2021-01-28 17:05:27,290 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - App execution was ended by user.
+INFO    2021-01-28 17:43:20,225 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-01-28 17:43:27,714 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-01-28 17:49:25,447 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title Wake up was added.
+INFO    2021-01-28 17:49:25,460 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-01-28 17:50:41,936 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title Wake up was deleted.
+INFO    2021-01-28 17:50:41,937 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-01-28 17:51:34,837 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title Wake up was added.
+INFO    2021-01-28 17:51:34,839 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-01-28 17:54:30,429 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title Wake up was changed.
+INFO    2021-01-28 17:54:30,431 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-01-28 17:56:32,181 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title Wake up was changed.
+INFO    2021-01-28 17:56:32,183 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-01-28 17:59:36,982 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - App execution was ended by user.
