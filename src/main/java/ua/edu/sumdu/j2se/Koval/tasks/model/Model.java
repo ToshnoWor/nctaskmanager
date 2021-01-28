@@ -11,7 +11,6 @@ import java.time.LocalTime;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-import static ua.edu.sumdu.j2se.Koval.tasks.view.View.*;
 
 /**
  * Class Model
@@ -51,7 +50,7 @@ public class Model {
      * Method configureLogging.
      * Configures the login.
      */
-    public static void configureLogging() {
+    public void configureLogging() {
         // creates pattern layout
         PatternLayout layout = new PatternLayout();
         String conversionPattern = "%-7p %d [%t] %c %x - %m%n";
@@ -82,7 +81,7 @@ public class Model {
      * @throws ClassNotFoundException
      * @throws InterruptedException
      */
-    public static void readOnDb(View view) throws IOException, ClassNotFoundException, InterruptedException {
+    public void readOnDb(View view) throws IOException, ClassNotFoundException, InterruptedException {
         if (list.size()==0) {
             FileInputStream fileIn = new FileInputStream("db.txt");
             ObjectInputStream inFile = new ObjectInputStream(fileIn);
@@ -112,7 +111,7 @@ public class Model {
      * Writes a list of tasks from a file.
      * @throws IOException
      */
-    public static void loadInDb() throws IOException {
+    public void loadInDb() throws IOException {
         FileOutputStream fileOut = new FileOutputStream("db.txt");
         ObjectOutputStream out = new ObjectOutputStream(fileOut);
         out.writeObject(list);
@@ -129,7 +128,7 @@ public class Model {
      * @param task The task we are looking for in the list.
      * @return If the task is on the list.
      */
-    public static boolean haveCopyTask(Task task){
+    public boolean haveCopyTask(Task task){
         for (int i = 0; i < list.size(); i++) {
             if (list.getTask(i).equals(task))
                 return true;
@@ -142,7 +141,7 @@ public class Model {
      * Filters the list of tasks inside and out. Draws them to the screen.
      * @throws InterruptedException
      */
-    public static void caseFilterTask(View view) throws InterruptedException {
+    public void caseFilterTask(View view) throws InterruptedException {
         Iterable<Task> res = Tasks.incoming(list, view.getTime("start"), view.getTime("end"));
         res.forEach(task -> System.out.println(task.toString()));
     }
@@ -151,7 +150,7 @@ public class Model {
      * Method createEmptyList.
      * Creates an empty to-do list.
      */
-    public static void createEmptyList(){
+    public void createEmptyList(){
         list = new LinkedTaskList();
     }
 
@@ -236,7 +235,7 @@ public class Model {
      * Removes the required task from the list.
      * @throws InterruptedException
      */
-    public static void removeTask(View view) throws InterruptedException {
+    public void removeTask(View view) throws InterruptedException {
         System.out.println("Enter id.");
         int id = view.scanInt();
         String title = "";
@@ -255,7 +254,7 @@ public class Model {
      * Adds a task to the list.
      * @throws InterruptedException
      */
-    public void addTask(View view) throws InterruptedException {
+    public void addTask(View view) throws InterruptedException, IOException {
         Task task = readTask(view);
         task.setActive(true);
         if (haveCopyTask(task))
@@ -384,7 +383,7 @@ public class Model {
      * Method exit.
      * Closes the application and sends the last log.
      */
-    public static void exit(){
+    public void exit(){
         logger.info("App execution was ended by user.");
     }
 
@@ -392,7 +391,7 @@ public class Model {
      * Writes a message to the log file.
      * @param message message log.
      */
-    public static void getMessageException(String message) {
+    public void getMessageException(String message) {
         logger.info(message);
     }
 }

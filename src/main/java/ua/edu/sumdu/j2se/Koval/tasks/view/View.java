@@ -1,10 +1,11 @@
 package ua.edu.sumdu.j2se.Koval.tasks.view;
 
+import ua.edu.sumdu.j2se.Koval.tasks.controller.Controller;
+
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
-import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.*;
 
 /**
  * Class View
@@ -133,7 +134,7 @@ public class View {
      * Calls the rendering method of tasks in the model class.
      */
     public void caseShowTasks(){
-        showTasks();
+        Controller.showTasks();
     }
 
     /**
@@ -147,9 +148,9 @@ public class View {
      * @throws InterruptedException
      */
     public void caseNextTimeTask(View view) throws NoSuchMethodException, InstantiationException, IllegalAccessException, CloneNotSupportedException, InvocationTargetException, InterruptedException {
-        if (listIsEmpty())
+        if (Controller.listIsEmpty())
             return;
-        NextTimeTask(view);
+        Controller.NextTimeTask(view);
     }
 
     /**

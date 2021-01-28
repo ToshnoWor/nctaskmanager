@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.InputMismatchException;
 
-import static ua.edu.sumdu.j2se.Koval.tasks.model.Model.*;
-
 /**
  * Controller class. On the other hand, the user changes the model.
  * @author Aleksei Koval
@@ -21,6 +19,18 @@ public class Controller {
     public Controller(){
         view = new View();
         model = new Model();
+    }
+
+    public static void NextTimeTask(View view) throws NoSuchMethodException, InterruptedException, InstantiationException, CloneNotSupportedException, IllegalAccessException, InvocationTargetException {
+        Model.NextTimeTask(view);
+    }
+
+    public static boolean listIsEmpty() {
+        return Model.listIsEmpty();
+    }
+
+    public static void showTasks() {
+        Model.showTasks();
     }
 
     /**
@@ -56,14 +66,14 @@ public class Controller {
      * @throws InterruptedException
      */
     public void caseRemoveTask() throws InputMismatchException, InterruptedException {
-        removeTask(view);
+        model.removeTask(view);
     }
 
     /**
      * The caseRemoveTask method is responsible for passing the command to add the task to the model.
      * @throws InterruptedException
      */
-    public void caseAddTask() throws InterruptedException {
+    public void caseAddTask() throws InterruptedException, IOException {
         model.addTask(view);
     }
 
@@ -71,14 +81,14 @@ public class Controller {
      * The caseRemoveTask method is responsible for passing the command to create an empty initial task list.
      */
     public void createEmptyList(){
-        Model.createEmptyList();
+        model.createEmptyList();
     }
 
     /**
      * The caseRemoveTask method is responsible for passing the command and configuring the program logging.
      */
     public void configureLogging(){
-        Model.configureLogging();
+        model.configureLogging();
     }
 
     /**
@@ -88,7 +98,7 @@ public class Controller {
      * @throws ClassNotFoundException
      */
     public void readOnDb() throws InterruptedException, IOException, ClassNotFoundException {
-        Model.readOnDb(view);
+        model.readOnDb(view);
     }
 
     /**
@@ -98,7 +108,7 @@ public class Controller {
      * @throws ClassNotFoundException
      */
     public void loadInDb() throws InterruptedException, IOException, ClassNotFoundException {
-        Model.loadInDb();
+        model.loadInDb();
     }
 
     /**
@@ -106,28 +116,38 @@ public class Controller {
      * @throws InterruptedException
      */
     public void caseFilterTask() throws InterruptedException {
-        Model.caseFilterTask(view);
+        model.caseFilterTask(view);
     }
 
     /**
      * The caseRemoveTask method is responsible for passing the command to exit the program.
      */
-    public static void exit(){
-        Model.exit();
+    public void exit(){
+        model.exit();
     }
 
     /**
      * The caseRemoveTask method is responsible for passing the error message that occurred in the program.
      * @param message Error message like string
      */
-    public static void getMessageException(String message){
-        Model.getMessageException(message);
+    public void getMessageException(String message){
+        model.getMessageException(message);
     }
 
+    /**
+     * Scan some int - code action
+     * @return some int
+     * @throws InterruptedException
+     */
     public int scanAction() throws InterruptedException {
         return view.scanAction();
     }
 
+    /**
+     * Life cycle program
+     * return continue or not
+     * @return true or false
+     */
     public boolean lifeCycle(){
         try {
             System.out.println("Add - 1\nShow - 2\nRemove - 3\nChange task - 4\nSave - 5\nLoad - 6\nFilter task by time - 7\nAlarm - 8\nExit - 9.\nYou can write 'quit' at anytime, when you want back to main menu.");
