@@ -2,7 +2,6 @@ package ua.edu.sumdu.j2se.Koval.tasks.view;
 
 import ua.edu.sumdu.j2se.Koval.tasks.controller.Controller;
 
-import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -138,22 +137,7 @@ public class View {
     }
 
     /**
-     * Method caseNextTimeTask.
-     * Calls a method to render the next task in the list to execute.
-     * @throws NoSuchMethodException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws CloneNotSupportedException
-     * @throws InvocationTargetException
-     * @throws InterruptedException
-     */
-    public void caseNextTimeTask(View view) throws NoSuchMethodException, InstantiationException, IllegalAccessException, CloneNotSupportedException, InvocationTargetException, InterruptedException {
-        if (Controller.listIsEmpty())
-            return;
-        Controller.NextTimeTask(view);
-    }
-
-    /**
+     * Method checkQuit.
      * Initiate an exit from the program.
      * @param value word quit to leave.
      * @throws InterruptedException
@@ -162,5 +146,14 @@ public class View {
         if (value.equals("quit")) {
             throw new InterruptedException("User returned to init execution.");
         }
+    }
+
+    /**
+     * Method Notification.
+     * Tells the user when the next task will be.
+     * @param message - name task
+     */
+    public void Notification(String message){
+        System.out.println("Now time to " + message);
     }
 }

@@ -140,7 +140,7 @@ public class Controller {
      */
     public boolean lifeCycle(){
         try {
-            System.out.println("Add - 1\nShow - 2\nRemove - 3\nChange task - 4\nFilter task by time - 5\nAlarm - 6\nExit - 7.\nYou can write 'quit' at anytime, when you want back to main menu.");
+            System.out.println("Add - 1\nShow - 2\nRemove - 3\nChange task - 4\nFilter task by time - 5\nExit - 6.\nYou can write 'quit' at anytime, when you want back to main menu.");
             int action = scanAction();
             switch (action){
                 case 1:
@@ -159,13 +159,10 @@ public class Controller {
                     caseFilterTask();
                     return true;
                 case 6:
-                    view.caseNextTimeTask(view);
-                    return true;
-                case 7:
                     exit();
                     return false;
             }
-        } catch (IOException | CloneNotSupportedException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException | ClassNotFoundException | InterruptedException e) {
+        } catch (IOException | ClassNotFoundException | InterruptedException e) {
             getMessageException(e.getMessage());
             System.out.println(e.getMessage());
             return true;
@@ -174,17 +171,21 @@ public class Controller {
     }
 
     /**
-     * Print next time task in list
-     * @param view - scanner
+     * Method Notification.
+     * Launches reminder methods.
+     * @throws InvocationTargetException
      * @throws NoSuchMethodException
-     * @throws InterruptedException
      * @throws InstantiationException
      * @throws CloneNotSupportedException
      * @throws IllegalAccessException
-     * @throws InvocationTargetException
      */
-    public static void NextTimeTask(View view) throws NoSuchMethodException, InterruptedException, InstantiationException, CloneNotSupportedException, IllegalAccessException, InvocationTargetException {
-        Model.NextTimeTask(view);
+    public void Notification() throws InvocationTargetException, NoSuchMethodException, InstantiationException, CloneNotSupportedException, IllegalAccessException {
+        if (Controller.listIsEmpty())
+            return;
+        String message = model.Notification();
+        if (message.equals("Not found"))
+            return;
+        view.Notification(message);
     }
 
     /**
