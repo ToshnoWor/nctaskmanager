@@ -101,7 +101,8 @@ public class Controller {
         try {
             System.out.println("Add - 1\nShow - 2\nRemove - 3\nChange task - 4\nFilter task by time - 5\nExit - 6.\nYou can write 'quit' at anytime, when you want back to main menu.");
             int action = scanAction();
-            map.get(action).doSomeThing(model, view);
+            if (map.get(action)!=null)
+                map.get(action).doSomeThing(model, view);
         } catch (IOException | InterruptedException e) {
             getMessageException(e.getMessage());
             return true;

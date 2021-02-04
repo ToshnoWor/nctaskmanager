@@ -53,7 +53,8 @@ class ChangeTask implements SelectActionInLifeCycle {
         int idSelectTest = view.scanInt();
         System.out.println("Enter change action: 1 - title; 2 - time; 3 - start, end,interval; 4 - active.");
         int actionChange = view.scanAction();
-        map.get(actionChange).doSomeThing(model, view, idSelectTest);
+        if (map.get(actionChange)!=null)
+            map.get(actionChange).doSomeThing(model, view, idSelectTest);
     }
 }
 

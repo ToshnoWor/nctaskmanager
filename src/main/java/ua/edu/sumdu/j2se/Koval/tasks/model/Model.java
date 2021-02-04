@@ -224,7 +224,8 @@ public class Model {
      */
     private void switcherChangeSEI(int id, View view) throws InterruptedException {
         System.out.println("Change start - 1, change end - 2, change interval - 3, change full - 4.");
-        map.get(view.scanInt()).doSomeThing(id, view, list);
+        if (map.get(view.scanInt())!=null)
+            map.get(view.scanInt()).doSomeThing(id, view, list);
     }
 
     /**
