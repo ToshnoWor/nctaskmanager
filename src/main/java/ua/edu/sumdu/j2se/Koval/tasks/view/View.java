@@ -90,7 +90,17 @@ public class View {
      * @param name - name time
      * @throws InterruptedException
      */
-    public void scanTime(String name) throws InterruptedException {
+    public LocalDateTime scanTime(String name) throws InterruptedException {
+        if (name.equals("'start'")) {
+            System.out.println("Take the current time?(True)");
+            if (scanBoolean())
+                return LocalDateTime.now();
+        }
+        if (name.equals("'end'")){
+            System.out.println("Take the time of the next day.(True)");
+            if (scanBoolean())
+                return LocalDateTime.now().plusDays(1);
+        }
         System.out.println("Enter " + name);
         System.out.println("Enter 'year'");
         int Year = scanInt();
@@ -102,7 +112,7 @@ public class View {
         int Hour = scanInt();
         System.out.println("Enter 'min'");
         int Min = scanInt();
-        time = LocalDateTime.of(Year,Month,DayOfMonth,Hour,Min);
+        return time = LocalDateTime.of(Year,Month,DayOfMonth,Hour,Min);
     }
 
     /**
@@ -113,8 +123,7 @@ public class View {
      * @throws InterruptedException
      */
     public LocalDateTime getTime(String name) throws InterruptedException {
-        scanTime(name);
-        return time;
+        return scanTime(name);
     }
 
     /**

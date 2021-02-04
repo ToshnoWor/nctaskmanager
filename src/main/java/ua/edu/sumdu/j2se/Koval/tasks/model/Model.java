@@ -136,7 +136,7 @@ public class Model {
      * @throws InterruptedException
      */
     public void caseFilterTask(View view) throws InterruptedException {
-        Iterable<Task> res = Tasks.incoming(list, view.getTime("start"), view.getTime("end"));
+        Iterable<Task> res = Tasks.incoming(list, view.getTime("'start'"), view.getTime("'end'"));
         res.forEach(task -> System.out.println(task.toString()));
     }
 
