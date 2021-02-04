@@ -8,6 +8,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 
@@ -22,13 +24,37 @@ public class Model {
      */
     static private LinkedTaskList list;
     /**
+     * Timing switch for repetitive task.
+     */
+    private Map<Integer, SelectScanTime> map;
+    /**
      * Program logger.
      */
-    static Logger logger = Logger.getLogger(Model.class);
+    static private final Logger logger = Logger.getLogger(Model.class);
     /**
      * Method listIsEmpty.
      * @return Is the task list empty.
      */
+    /**
+     * Constructor Model.
+     * create map
+     */
+    public Model(){
+        createMap();
+    }
+
+    /**
+     * Method createMap.
+     * Create map for timing switch.
+     */
+    private void createMap(){
+        map = new HashMap<>();
+        map.put(1, new Start());
+        map.put(2, new End());
+        map.put(3, new Interval());
+        map.put(4, new FullChange());
+    }
+
     static public boolean listIsEmpty(){
         return list.size()<1;
     }
@@ -198,22 +224,7 @@ public class Model {
      */
     private void switcherChangeSEI(int id, View view) throws InterruptedException {
         System.out.println("Change start - 1, change end - 2, change interval - 3, change full - 4.");
-        switch (view.scanInt()){
-            case 1:
-                list.getTask(id).setTime(view.getTime("'start'"), list.getTask(id).getEndTime(), list.getTask(id).getRepeatInterval());
-                break;
-            case 2:
-                list.getTask(id).setTime(list.getTask(id).getStartTime(), view.getTime("'end'"), list.getTask(id).getRepeatInterval());
-                break;
-            case 3:
-                list.getTask(id).setTime(list.getTask(id).getStartTime(), list.getTask(id).getEndTime(), view.getInterval());
-                break;
-            case 4:
-                list.getTask(id).setTime(view.getTime("'start'"), view.getTime("'end'"), view.getInterval());
-                break;
-            default:
-                System.out.println("Error select");
-        }
+        map.get(view.scanInt()).doSomeThing(id, view, list);
     }
 
     /**

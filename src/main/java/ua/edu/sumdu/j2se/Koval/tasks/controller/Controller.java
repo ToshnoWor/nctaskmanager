@@ -5,7 +5,8 @@ import ua.edu.sumdu.j2se.Koval.tasks.view.View;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.InputMismatchException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Controller class. On the other hand, the user changes the model.
@@ -13,76 +14,52 @@ import java.util.InputMismatchException;
  */
 public class Controller {
 
-    View view;
-    Model model;
+    public View view;
+    public Model model;
+    /**
+     *  Map for a life cycle
+     */
+    private Map<Integer, SelectActionInLifeCycle> map;
 
+    /**
+     * Constructor Controller.
+     * Creates an instance of the model, view and map.
+     */
     public Controller(){
         view = new View();
         model = new Model();
+        CreateMap();
     }
 
     /**
-     * The caseChangeTask method is responsible for modifying an existing task.
-     * @throws InterruptedException
+     * Method CreateMap.
+     * Creates a map for a life cycle.
      */
-    public void caseChangeTask() throws InterruptedException, IOException {
-        System.out.println("Enter id task");
-        int idSelectTest = view.scanInt();
-        System.out.println("Enter change action: 1 - title; 2 - time; 3 - start, end,interval; 4 - active.");
-        int actionChange = view.scanAction();
-        switch (actionChange){
-            case 1:
-                System.out.println("Enter your new title");
-                model.changeTitle(idSelectTest, view);
-                break;
-            case 2:
-                model.changeTime(idSelectTest, view);
-                break;
-            case 3:
-                model.changeStartEndInterval(idSelectTest, view);
-                break;
-            case 4:
-                System.out.println("Enter true if you want to activate the task, and false otherwise.");
-                model.changeActive(idSelectTest, view);
-                break;
-            default:
-                System.out.println("Error select");
-        }
+    private void CreateMap(){
+        map = new HashMap<>();
+        map.put(1, new AddTask());
+        map.put(2, new ShowTask());
+        map.put(3, new RemoveTask());
+        map.put(4, new ChangeTask());
+        map.put(5, new GetNextTasks());
+        map.put(6, new Exit());
     }
-
     /**
-     * The caseRemoveTask method is responsible for passing the command and removing the task to the model.
-     * @throws InputMismatchException
-     * @throws InterruptedException
-     */
-    public void caseRemoveTask() throws InputMismatchException, InterruptedException, IOException {
-        model.removeTask(view);
-    }
-
-    /**
-     * The caseRemoveTask method is responsible for passing the command to add the task to the model.
-     * @throws InterruptedException
-     */
-    public void caseAddTask() throws InterruptedException, IOException, ClassNotFoundException {
-        model.addTask(view);
-    }
-
-    /**
-     * The caseRemoveTask method is responsible for passing the command to create an empty initial task list.
+     * The createEmptyList method is responsible for passing the command to create an empty initial task list.
      */
     public void createEmptyList(){
         model.createEmptyList();
     }
 
     /**
-     * The caseRemoveTask method is responsible for passing the command and configuring the program logging.
+     * The configureLogging method is responsible for passing the command and configuring the program logging.
      */
     public void configureLogging(){
         model.configureLogging();
     }
 
     /**
-     * The caseRemoveTask method is responsible for passing a command and reading a list of tasks from a file.
+     * The readOnDb method is responsible for passing a command and reading a list of tasks from a file.
      * @throws InterruptedException
      * @throws IOException
      * @throws ClassNotFoundException
@@ -92,32 +69,14 @@ public class Controller {
     }
 
     /**
-     * The caseRemoveTask method is responsible for passing a command and writing a list of tasks from a file.
+     * The loadInDb method is responsible for passing a command and writing a list of tasks from a file.
      * @throws InterruptedException
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public void loadInDb() throws InterruptedException, IOException, ClassNotFoundException {
-        model.loadInDb();
-    }
 
     /**
-     * The caseRemoveTask method is responsible for passing the command to sort tasks by condition from and to.
-     * @throws InterruptedException
-     */
-    public void caseFilterTask() throws InterruptedException {
-        model.caseFilterTask(view);
-    }
-
-    /**
-     * The caseRemoveTask method is responsible for passing the command to exit the program.
-     */
-    public void exit(){
-        model.exit();
-    }
-
-    /**
-     * The caseRemoveTask method is responsible for passing the error message that occurred in the program.
+     * The getMessageException method is responsible for passing the error message that occurred in the program.
      * @param message Error message like string
      */
     public void getMessageException(String message){
@@ -142,29 +101,9 @@ public class Controller {
         try {
             System.out.println("Add - 1\nShow - 2\nRemove - 3\nChange task - 4\nFilter task by time - 5\nExit - 6.\nYou can write 'quit' at anytime, when you want back to main menu.");
             int action = scanAction();
-            switch (action){
-                case 1:
-                    caseAddTask();
-                    return true;
-                case 2:
-                    view.caseShowTasks();
-                    return true;
-                case 3:
-                    caseRemoveTask();
-                    return true;
-                case 4:
-                    caseChangeTask();
-                    return true;
-                case 5:
-                    caseFilterTask();
-                    return true;
-                case 6:
-                    exit();
-                    return false;
-            }
-        } catch (IOException | ClassNotFoundException | InterruptedException e) {
+            map.get(action).doSomeThing(model, view);
+        } catch (IOException | InterruptedException e) {
             getMessageException(e.getMessage());
-            System.out.println(e.getMessage());
             return true;
         }
         return true;

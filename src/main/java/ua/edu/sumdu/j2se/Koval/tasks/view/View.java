@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class View {
 
     private int action;
-    private LocalDateTime time;
 
     public View(){}
 
@@ -112,6 +111,7 @@ public class View {
         int Hour = scanInt();
         System.out.println("Enter 'min'");
         int Min = scanInt();
+        LocalDateTime time;
         return time = LocalDateTime.of(Year,Month,DayOfMonth,Hour,Min);
     }
 
