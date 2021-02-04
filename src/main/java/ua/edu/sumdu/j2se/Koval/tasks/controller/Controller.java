@@ -1,5 +1,6 @@
 package ua.edu.sumdu.j2se.Koval.tasks.controller;
 
+import org.apache.log4j.Logger;
 import ua.edu.sumdu.j2se.Koval.tasks.model.Model;
 import ua.edu.sumdu.j2se.Koval.tasks.view.View;
 
@@ -16,6 +17,7 @@ public class Controller {
 
     public View view;
     public Model model;
+    static private final Logger logger = Logger.getLogger(Controller.class);
     /**
      *  Map for a life cycle
      */
@@ -52,13 +54,6 @@ public class Controller {
     }
 
     /**
-     * The configureLogging method is responsible for passing the command and configuring the program logging.
-     */
-    public void configureLogging(){
-        model.configureLogging();
-    }
-
-    /**
      * The readOnDb method is responsible for passing a command and reading a list of tasks from a file.
      * @throws InterruptedException
      * @throws IOException
@@ -66,21 +61,6 @@ public class Controller {
      */
     public void readOnDb() throws InterruptedException, IOException, ClassNotFoundException {
         model.readOnDb(view);
-    }
-
-    /**
-     * The loadInDb method is responsible for passing a command and writing a list of tasks from a file.
-     * @throws InterruptedException
-     * @throws IOException
-     * @throws ClassNotFoundException
-     */
-
-    /**
-     * The getMessageException method is responsible for passing the error message that occurred in the program.
-     * @param message Error message like string
-     */
-    public void getMessageException(String message){
-        model.getMessageException(message);
     }
 
     /**
@@ -102,10 +82,10 @@ public class Controller {
             System.out.println("Add - 1\nShow - 2\nRemove - 3\nChange task - 4\nFilter task by time - 5\nExit - 6.\nYou can write 'quit' at anytime, when you want back to main menu.");
             int action = scanAction();
             if (map.get(action)!=null)
-                map.get(action).doSomeThing(model, view);
+                return map.get(action).doSomeThing(model, view, logger);
         } catch (IOException | InterruptedException e) {
-            getMessageException(e.getMessage());
-            return true;
+            logger.info("Error: ", e);
+            return false;
         }
         return true;
     }

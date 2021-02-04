@@ -31,10 +31,7 @@ public class Model {
      * Program logger.
      */
     static private final Logger logger = Logger.getLogger(Model.class);
-    /**
-     * Method listIsEmpty.
-     * @return Is the task list empty.
-     */
+
     /**
      * Constructor Model.
      * create map
@@ -54,7 +51,10 @@ public class Model {
         map.put(3, new Interval());
         map.put(4, new FullChange());
     }
-
+    /**
+     * Method listIsEmpty.
+     * @return Is the task list empty.
+     */
     static public boolean listIsEmpty(){
         return list.size()<1;
     }
@@ -68,34 +68,6 @@ public class Model {
             System.out.println(list.toString());
         else
             System.out.println("Empty!");
-    }
-
-    /**
-     * Method configureLogging.
-     * Configures the login.
-     */
-    public void configureLogging() {
-        // creates pattern layout
-        PatternLayout layout = new PatternLayout();
-        String conversionPattern = "%-7p %d [%t] %c %x - %m%n";
-        layout.setConversionPattern(conversionPattern);
-
-        // creates console appender
-        ConsoleAppender consoleAppender = new ConsoleAppender();
-        consoleAppender.setLayout(layout);
-        consoleAppender.activateOptions();
-
-        // creates file appender
-        FileAppender fileAppender = new FileAppender();
-        fileAppender.setFile("logs.txt");
-        fileAppender.setLayout(layout);
-        fileAppender.activateOptions();
-
-        // configures the root logger
-        Logger rootLogger = Logger.getRootLogger();
-        rootLogger.setLevel(Level.DEBUG);
-        rootLogger.addAppender(consoleAppender);
-        rootLogger.addAppender(fileAppender);
     }
 
     /**
@@ -128,6 +100,7 @@ public class Model {
                 }
             }
         }
+        logger.info("Tasks was successfully load to app from database.");
     }
 
     /**
@@ -388,22 +361,5 @@ public class Model {
         if (id!=-1)
             return list.getTask(id);
         return null;
-    }
-
-
-    /**
-     * Method exit.
-     * Closes the application and sends the last log.
-     */
-    public void exit(){
-        logger.info("App execution was ended by user.");
-    }
-
-    /**
-     * Writes a message to the log file.
-     * @param message message log.
-     */
-    public void getMessageException(String message) {
-        logger.info(message);
     }
 }

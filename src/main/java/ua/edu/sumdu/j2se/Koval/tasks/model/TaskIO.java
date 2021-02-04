@@ -1,6 +1,7 @@
 package ua.edu.sumdu.j2se.Koval.tasks.model;
 
 import com.google.gson.Gson;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -16,6 +17,9 @@ import java.util.TimeZone;
  * @author Aleksei Koval
  */
 public class TaskIO {
+
+    static private final Logger logger = Logger.getLogger(TaskIO.class);
+
     /**
      * Writes tasks from the list to the stream in the binary format described below.
      * @param tasks data to write
@@ -47,7 +51,7 @@ public class TaskIO {
                             .toInstant().toEpochMilli());
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.info("Error: ", e);
             }
         });
         outStream.flush();
@@ -89,7 +93,7 @@ public class TaskIO {
                 }
                 tasks.add(task);
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.info("Error: ", e);
             }
         }
 

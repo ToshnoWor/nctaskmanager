@@ -1,5 +1,7 @@
 package ua.edu.sumdu.j2se.Koval.tasks.model;
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDateTime;
@@ -11,6 +13,9 @@ import java.util.stream.Stream;
  * @author Aleksei Koval
  */
 public abstract class AbstractTaskList implements Cloneable, Serializable, Iterable<Task> {
+
+    static private final Logger logger = Logger.getLogger(AbstractTaskList.class);
+
     /**
      * Method add.
      * Add task to list.
@@ -135,7 +140,7 @@ public abstract class AbstractTaskList implements Cloneable, Serializable, Itera
             return (AbstractTaskList) objectInputStream.readObject();
         }
         catch (Exception e) {
-            e.printStackTrace();
+            logger.info("Error: ", e);
             return null;
         }
     }

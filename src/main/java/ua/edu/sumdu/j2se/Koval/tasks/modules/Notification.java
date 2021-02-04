@@ -1,11 +1,14 @@
 package ua.edu.sumdu.j2se.Koval.tasks.modules;
 
+import org.apache.log4j.Logger;
 import ua.edu.sumdu.j2se.Koval.tasks.controller.Controller;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class Notification extends Thread {
     Controller controller;
+
+    static private final Logger logger = Logger.getLogger(Notification.class);
 
     public Notification(Controller controller){
         setDaemon(true);
@@ -23,14 +26,14 @@ public class Notification extends Thread {
             try {
                 this.controller.Notification();
             } catch (InvocationTargetException | IllegalAccessException | CloneNotSupportedException | InstantiationException | NoSuchMethodException e) {
-                e.printStackTrace();
+                logger.info("Error: ",e);
             }
 
             try {
                 sleep(1000);
             }
             catch (InterruptedException e){
-                System.out.println("Error:" + e.getMessage());
+                logger.info("Error: ",e);
             }
         }
     }

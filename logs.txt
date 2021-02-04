@@ -28,3 +28,9 @@ INFO    2021-02-04 16:49:52,596 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model
 INFO    2021-02-04 16:49:52,600 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
 INFO    2021-02-04 17:36:50,860 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title TestCase was changed.
 INFO    2021-02-04 17:36:50,866 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-04 17:56:26,627 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title TestCase was changed.
+INFO    2021-02-04 17:56:26,634 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-04 17:56:37,145 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - App execution was ended by user.
+INFO    2021-02-04 18:03:40,581 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - App execution was ended by user.
+INFO    2021-02-04 18:04:55,309 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - App execution was ended by user.
+INFO    2021-02-04 18:07:50,381 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - App execution was ended by user.
