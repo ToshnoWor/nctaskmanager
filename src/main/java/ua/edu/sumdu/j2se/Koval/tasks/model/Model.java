@@ -338,8 +338,10 @@ public class Model {
         LocalDateTime min = LocalDateTime.of(9999,1,1,0,0);
         LocalDateTime now = LocalDateTime.now();
         int id = -1;
-        for (int i = 0; i < list.size(); i++){
+        int size = list.size();
+        for (int i = 0; i < size; i++){
             assert min != null;
+            if (list.getTask(i).nextTimeAfter(now)!=null)
             if (Objects.requireNonNull(list.getTask(i).nextTimeAfter(now)).isBefore(min)) {
                 min = list.getTask(i).nextTimeAfter(now);
                 id = i;
