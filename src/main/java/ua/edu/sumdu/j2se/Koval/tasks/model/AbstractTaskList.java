@@ -16,6 +16,8 @@ public abstract class AbstractTaskList implements Cloneable, Serializable, Itera
 
     static private final Logger logger = Logger.getLogger(AbstractTaskList.class);
 
+    private static final long serialVersionUID = 6529685098267757690L;
+
     /**
      * Method add.
      * Add task to list.

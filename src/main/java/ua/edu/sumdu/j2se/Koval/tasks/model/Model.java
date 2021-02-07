@@ -1,5 +1,6 @@
 package ua.edu.sumdu.j2se.Koval.tasks.model;
 
+import com.google.gson.stream.JsonWriter;
 import org.apache.log4j.*;
 import ua.edu.sumdu.j2se.Koval.tasks.view.View;
 
@@ -31,7 +32,10 @@ public class Model {
      * Program logger.
      */
     static private final Logger logger = Logger.getLogger(Model.class);
-
+    /**
+     * Name database file.
+     */
+    static private final String DB_NAME = "db.json";
     /**
      * Constructor Model.
      * create map
@@ -71,34 +75,53 @@ public class Model {
     }
 
     /**
+     * Creating a stream of writing to a file.
+     * @return stream
+     */
+    private LinkedTaskList listFromFile() {
+        File f = new File(DB_NAME);
+        if (f.exists() && !f.isDirectory()) {
+            try {
+                FileInputStream fileIn = new FileInputStream(f);
+                ObjectInputStream inFile = new ObjectInputStream(fileIn);
+                TaskIO.read(list, inFile);
+                //Reader reader = new FileReader(DB_NAME);
+                //TaskIO.read(list, reader);
+                return (LinkedTaskList) inFile.readObject();
+            } catch (IOException | ClassNotFoundException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+                logger.info("Error:", e);
+            }
+        }
+        this.createEmptyList();
+        loadInDb();
+        return list;
+    }
+
+    /**
      * Method readOnDb.
      * Reads a task sheet from a file.
-     * @throws IOException
-     * @throws ClassNotFoundException
-     * @throws InterruptedException
      */
-    public void readOnDb(View view) throws IOException, ClassNotFoundException, InterruptedException {
-        if (list.size()==0) {
-            FileInputStream fileIn = new FileInputStream("db.txt");
-            ObjectInputStream inFile = new ObjectInputStream(fileIn);
-            list = (LinkedTaskList) inFile.readObject();
-        } else {
-            System.out.println("List not empty, replace(true) or add new tasks(false)");
-            if (view.scanBoolean()){
-                FileInputStream fileIn = new FileInputStream("db.txt");
-                ObjectInputStream inFile = new ObjectInputStream(fileIn);
-                list = (LinkedTaskList) inFile.readObject();
+    public void readOnDb(View view) {
+
+        try {
+            if (list.size()==0) {
+                list = listFromFile();
             } else {
-                LinkedTaskList newList;
-                FileInputStream fileIn = new FileInputStream("db.txt");
-                ObjectInputStream inFile = new ObjectInputStream(fileIn);
-                newList = (LinkedTaskList) inFile.readObject();
-                for (int i = 0; i < newList.size(); i++) {
-                    if (!haveCopyTask(newList.getTask(i))) {
-                        list.add(newList.getTask(i));
+                System.out.println("List not empty, replace(true) or add new tasks(false)");
+                if (view.scanBoolean()){
+                    list = listFromFile();
+                } else {
+                    LinkedTaskList newList;
+                    newList = listFromFile();
+                    for (int i = 0; i < newList.size(); i++) {
+                        if (!haveCopyTask(newList.getTask(i))) {
+                            list.add(newList.getTask(i));
+                        }
                     }
                 }
             }
+        } catch (NullPointerException | InterruptedException e) {
+            logger.info("Error:", e);
         }
         logger.info("Tasks was successfully load to app from database.");
     }
@@ -106,12 +129,20 @@ public class Model {
     /**
      * Method loadInDb.
      * Writes a list of tasks from a file.
-     * @throws IOException
      */
-    public void loadInDb() throws IOException {
-        FileOutputStream fileOut = new FileOutputStream("db.txt");
-        ObjectOutputStream out = new ObjectOutputStream(fileOut);
-        out.writeObject(list);
+    public void loadInDb() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream(DB_NAME);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            TaskIO.write(list, out);
+            //Writer writer = new FileWriter(DB_NAME);
+            //TaskIO.write(list, writer);
+            out.writeObject(list);
+        } catch (IOException e) {
+            logger.info("Error:", e);
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
         logger.info("Tasks was successfully saved to database.");
     }
 
@@ -287,10 +318,12 @@ public class Model {
      */
     public String Notification() throws NoSuchMethodException, InstantiationException, IllegalAccessException, CloneNotSupportedException, InvocationTargetException {
         Task nextTask = getNextTaskToGo();
-        LocalTime timeToTask = Objects.requireNonNull(nextTask.nextTimeAfter(LocalDateTime.now())).toLocalTime();
-        LocalTime now = LocalTime.now().truncatedTo(ChronoUnit.SECONDS).plusSeconds(2);
-        if (timeToTask.equals(now)){
-            return nextTask.getTitle();
+        if (nextTask!=null){
+            LocalTime timeToTask = Objects.requireNonNull(nextTask.nextTimeAfter(LocalDateTime.now())).toLocalTime();
+            LocalTime now = LocalTime.now().truncatedTo(ChronoUnit.SECONDS).plusSeconds(2);
+            if (timeToTask.truncatedTo(ChronoUnit.SECONDS).equals(now)){
+                return nextTask.getTitle();
+            }
         }
         return "Not found";
     }

@@ -163,6 +163,6 @@ public class View {
      * @param message - name task
      */
     public void Notification(String message){
-        System.out.println("Now time to " + message);
+        System.out.println("Now time to '" + message+"'.");
     }
 }

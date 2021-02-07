@@ -34,3 +34,239 @@ INFO    2021-02-04 17:56:37,145 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model
 INFO    2021-02-04 18:03:40,581 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - App execution was ended by user.
 INFO    2021-02-04 18:04:55,309 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - App execution was ended by user.
 INFO    2021-02-04 18:07:50,381 [main] ua.edu.sumdu.j2se.Koval.tasks.UI  - App execution was ended by user.
+INFO    2021-02-07 16:13:54,918 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.io.InvalidClassException: ua.edu.sumdu.j2se.Koval.tasks.model.AbstractTaskList; local class incompatible: stream classdesc serialVersionUID = 3844842913475159490, local class serialVersionUID = -2459519054285093705
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:724)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2202)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1712)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:519)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:477)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:103)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:13:54,923 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:14:16,271 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.io.InvalidClassException: ua.edu.sumdu.j2se.Koval.tasks.model.AbstractTaskList; local class incompatible: stream classdesc serialVersionUID = 3844842913475159490, local class serialVersionUID = -2459519054285093705
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:724)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2202)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1712)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:519)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:477)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:103)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:14:16,280 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:20:01,427 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.io.InvalidClassException: ua.edu.sumdu.j2se.Koval.tasks.model.AbstractTaskList; local class incompatible: stream classdesc serialVersionUID = 3844842913475159490, local class serialVersionUID = -2459519054285093705
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:724)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2202)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1712)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:519)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:477)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:86)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:104)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:20:01,457 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.lang.NullPointerException: DataBase file not found!
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:91)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:104)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:20:01,473 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:21:05,337 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.io.InvalidClassException: ua.edu.sumdu.j2se.Koval.tasks.model.AbstractTaskList; local class incompatible: stream classdesc serialVersionUID = 3844842913475159490, local class serialVersionUID = -2459519054285093705
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:724)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2202)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1712)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:519)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:477)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:87)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:105)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:21:05,341 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.lang.NullPointerException: DataBase file not found!
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:92)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:105)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:21:05,342 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:22:16,250 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.io.InvalidClassException: ua.edu.sumdu.j2se.Koval.tasks.model.AbstractTaskList; local class incompatible: stream classdesc serialVersionUID = 3844842913475159490, local class serialVersionUID = -2459519054285093705
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:724)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2202)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1712)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:519)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:477)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:87)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:105)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:22:16,255 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.lang.NullPointerException: DataBase file not found!
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:92)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:105)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:22:16,255 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:22:50,491 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.io.InvalidClassException: ua.edu.sumdu.j2se.Koval.tasks.model.AbstractTaskList; local class incompatible: stream classdesc serialVersionUID = 3844842913475159490, local class serialVersionUID = -2459519054285093705
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:724)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2202)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1712)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:519)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:477)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:87)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:105)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:22:50,500 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.lang.NullPointerException: DataBase file not found!
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:92)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:105)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:22:50,502 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:23:29,274 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.io.InvalidClassException: ua.edu.sumdu.j2se.Koval.tasks.model.AbstractTaskList; local class incompatible: stream classdesc serialVersionUID = 3844842913475159490, local class serialVersionUID = -2459519054285093705
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:724)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2202)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1712)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:519)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:477)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:87)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:105)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:23:29,280 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.lang.NullPointerException: DataBase file not found!
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:92)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:105)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:23:29,281 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:24:49,311 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.io.InvalidClassException: ua.edu.sumdu.j2se.Koval.tasks.model.AbstractTaskList; local class incompatible: stream classdesc serialVersionUID = 3844842913475159490, local class serialVersionUID = -2459519054285093705
+	at java.base/java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:724)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045)
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1895)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2202)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1712)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:519)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:477)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:87)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:105)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:24:49,319 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.lang.NullPointerException: DataBase file not found!
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:92)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:105)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:24:49,320 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:27:35,121 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:30:06,371 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.lang.NullPointerException: DataBase file not found!
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:92)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:106)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:30:06,376 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:31:09,041 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title Wake up was added.
+INFO    2021-02-07 16:31:09,087 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 16:31:17,327 [main] ua.edu.sumdu.j2se.Koval.tasks.controller.Controller  - App execution was ended by user.
+INFO    2021-02-07 16:31:23,715 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:31:44,948 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:38:28,151 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:42:38,644 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 16:42:38,646 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:54:29,141 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 16:54:29,143 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:56:37,954 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 16:56:37,956 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:56:55,792 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title test was added.
+INFO    2021-02-07 16:56:55,799 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 16:57:26,998 [main] ua.edu.sumdu.j2se.Koval.tasks.controller.Controller  - App execution was ended by user.
+INFO    2021-02-07 16:57:37,526 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Error:
+java.io.StreamCorruptedException: invalid stream header: 7B227369
+	at java.base/java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:966)
+	at java.base/java.io.ObjectInputStream.<init>(ObjectInputStream.java:405)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.dbFile(Model.java:86)
+	at ua.edu.sumdu.j2se.Koval.tasks.model.Model.readOnDb(Model.java:107)
+	at ua.edu.sumdu.j2se.Koval.tasks.controller.Controller.readOnDb(Controller.java:63)
+	at ua.edu.sumdu.j2se.Koval.tasks.UI.app(UI.java:28)
+	at ua.edu.sumdu.j2se.Koval.tasks.App.main(App.java:19)
+INFO    2021-02-07 16:57:37,642 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 16:57:37,642 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 16:59:05,192 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 16:59:05,193 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 17:06:45,828 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 17:06:45,833 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 17:06:59,279 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title test was added.
+INFO    2021-02-07 17:06:59,303 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 17:09:31,642 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 17:11:02,565 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title test2 was added.
+INFO    2021-02-07 17:11:02,574 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 17:11:55,117 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title Wake up was added.
+INFO    2021-02-07 17:11:55,122 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 17:13:07,670 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title testNoti was added.
+INFO    2021-02-07 17:13:07,673 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 17:14:56,750 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 17:18:10,411 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 17:18:39,600 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 17:24:25,415 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 17:24:50,044 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 17:25:04,566 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 17:25:37,220 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully load to app from database.
+INFO    2021-02-07 17:26:15,661 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title test was changed.
+INFO    2021-02-07 17:26:15,671 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 17:26:25,653 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Task with title test2 was changed.
+INFO    2021-02-07 17:26:25,655 [main] ua.edu.sumdu.j2se.Koval.tasks.model.Model  - Tasks was successfully saved to database.
+INFO    2021-02-07 17:26:30,701 [main] ua.edu.sumdu.j2se.Koval.tasks.controller.Controller  - App execution was ended by user.
