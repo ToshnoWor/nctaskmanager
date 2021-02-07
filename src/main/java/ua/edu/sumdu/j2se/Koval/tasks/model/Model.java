@@ -1,6 +1,5 @@
 package ua.edu.sumdu.j2se.Koval.tasks.model;
 
-import com.google.gson.stream.JsonWriter;
 import org.apache.log4j.*;
 import ua.edu.sumdu.j2se.Koval.tasks.view.View;
 
@@ -74,6 +73,22 @@ public class Model {
             System.out.println("Empty!");
     }
 
+    private LinkedTaskList listFromFileGson() {
+        File f = new File(DB_NAME);
+        if (f.exists() && !f.isDirectory()) {
+            try {
+                LinkedTaskList readList = new LinkedTaskList();
+                TaskIO.read(readList, new FileReader(DB_NAME));
+                return readList;
+            } catch (IOException e) {
+                logger.info("Error:", e);
+            }
+        }
+        this.createEmptyList();
+        loadInDbGson();
+        return list;
+    }
+
     /**
      * Creating a stream of writing to a file.
      * @return stream
@@ -105,14 +120,14 @@ public class Model {
 
         try {
             if (list.size()==0) {
-                list = listFromFile();
+                list = listFromFileGson();
             } else {
                 System.out.println("List not empty, replace(true) or add new tasks(false)");
                 if (view.scanBoolean()){
-                    list = listFromFile();
+                    list = listFromFileGson();
                 } else {
                     LinkedTaskList newList;
-                    newList = listFromFile();
+                    newList = listFromFileGson();
                     for (int i = 0; i < newList.size(); i++) {
                         if (!haveCopyTask(newList.getTask(i))) {
                             list.add(newList.getTask(i));
@@ -124,6 +139,17 @@ public class Model {
             logger.info("Error:", e);
         }
         logger.info("Tasks was successfully load to app from database.");
+    }
+
+    public void loadInDbGson() {
+        try {
+            TaskIO.write(list, new FileWriter(DB_NAME));
+        } catch (IOException e) {
+            logger.info("Error:", e);
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        logger.info("Tasks was successfully saved to database.");
     }
 
     /**
@@ -187,7 +213,7 @@ public class Model {
     public void changeTitle(int id, View view) throws InterruptedException, IOException {
         list.getTask(id).setTitle(view.scanString());
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
-        loadInDb();
+        loadInDbGson();
     }
 
     /**
@@ -199,7 +225,7 @@ public class Model {
     public void changeTime(int id, View view) throws InterruptedException, IOException {
         list.getTask(id).setTime(view.getTime("time"));
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
-        loadInDb();
+        loadInDbGson();
     }
 
     /**
@@ -217,7 +243,7 @@ public class Model {
                 switcherChangeSEI(id, view);
         }
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
-        loadInDb();
+        loadInDbGson();
     }
 
     /**
@@ -241,7 +267,7 @@ public class Model {
     public void changeActive(int id, View view) throws InterruptedException, IOException {
         list.getTask(id).setActive(view.scanBoolean());
         logger.info("Task with title " + list.getTask(id).getTitle() + " was changed.");
-        loadInDb();
+        loadInDbGson();
     }
 
     /**
@@ -261,7 +287,7 @@ public class Model {
             System.out.println("You are mistaken.");
         }
         logger.info("Task with title " + title + " was deleted.");
-        loadInDb();
+        loadInDbGson();
     }
 
     /**
@@ -277,7 +303,7 @@ public class Model {
         else
             list.add(task);
         logger.info("Task with title " + task.getTitle() + " was added.");
-        loadInDb();
+        loadInDbGson();
     }
 
     /**
